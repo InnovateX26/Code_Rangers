@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payflow – Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="login-page">
+
+  <div class="login-bg">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+  </div>
+
+  <div class="login-container">
+    <div class="login-card">
+      <div class="logo-wrap">
+        <div class="logo-icon">₹</div>
+        <span class="logo-text">Payflow</span>
+      </div>
+      <p class="login-tagline">Turn scattered transactions into<br><strong>clear financial insights.</strong></p>
+
+      <!-- Step 1: Phone -->
+      <div id="step-phone" class="step active">
+        <label class="input-label">Mobile Number</label>
+        <div class="input-group">
+          <span class="prefix">+91</span>
+          <input type="tel" id="phone-input" maxlength="10" placeholder="Enter 10-digit number" />
+        </div>
+        <div class="permission-note">
+          <span class="note-icon">🔒</span>
+          <span>We only <strong>read</strong> your UPI data. No payments are made from this app.</span>
+        </div>
+        <button class="btn-primary" onclick="sendOTP()">Send OTP</button>
+      </div>
+
+      <!-- Step 2: OTP -->
+      <div id="step-otp" class="step">
+        <p class="otp-hint">OTP sent to <strong id="otp-phone-display"></strong></p>
+        <label class="input-label">Enter OTP</label>
+        <div class="otp-boxes">
+          <input type="tel" maxlength="1" class="otp-box" />
+          <input type="tel" maxlength="1" class="otp-box" />
+          <input type="tel" maxlength="1" class="otp-box" />
+          <input type="tel" maxlength="1" class="otp-box" />
+        </div>
+        <p class="demo-hint">Demo OTP: <strong>1234</strong></p>
+        <button class="btn-primary" onclick="verifyOTP()">Verify & Continue</button>
+        <button class="btn-ghost" onclick="backToPhone()">← Change Number</button>
+      </div>
+
+      <!-- Step 3: UPI Permission -->
+      <div id="step-permission" class="step">
+        <div class="permission-card">
+          <div class="perm-icon">📱</div>
+          <h3>Connect Your UPI Data</h3>
+          <p>Payflow will read your UPI transaction SMS to show you smart insights. <strong>No payments will ever be made.</strong></p>
+          <ul class="perm-list">
+            <li>✅ Read UPI SMS messages</li>
+            <li>✅ Categorise your spends</li>
+            <li>✅ Show spending patterns</li>
+            <li>❌ No payments or transfers</li>
+            <li>❌ No UPI PIN required</li>
+            <li>❌ No data sold to third parties</li>
+          </ul>
+        </div>
+        <button class="btn-primary" onclick="grantPermission()">Allow & Continue</button>
+        <button class="btn-ghost" onclick="skipPermission()">Set up later</button>
+      </div>
+
+      <!-- Step 4: Loading -->
+      <div id="step-loading" class="step">
+        <div class="loading-anim">
+          <div class="sync-ring"></div>
+          <div class="sync-icon">₹</div>
+        </div>
+        <p class="loading-text" id="loading-text">Reading your transactions…</p>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

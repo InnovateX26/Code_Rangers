@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payflow – Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="app-page">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-logo">₹ Payflow</div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="nav-link active">Home</a>
+      <a href="transactions.html" class="nav-link">Transactions</a>
+      <a href="insights.html" class="nav-link">Insights</a>
+    </div>
+    <div class="nav-right">
+      <button class="sync-btn" id="sync-btn" onclick="syncData()">
+        <span class="sync-icon-btn">⟳</span> Sync
+      </button>
+      <div class="avatar">KK</div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+
+    <!-- Nudge Alerts -->
+    <div id="nudge-container" class="nudge-container"></div>
+
+    <!-- Top Row -->
+    <div class="top-row">
+      <div class="balance-card">
+        <div class="balance-label">Total Balance</div>
+        <div class="balance-amount" id="total-balance">₹0</div>
+        <div class="balance-sub">
+          <span>🏦 Bank: <strong id="bank-balance">₹0</strong></span>
+          <span>💵 Cash: <strong id="cash-balance">₹0</strong></span>
+        </div>
+        <div class="balance-tag">Net worth across all accounts</div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon">📤</div>
+          <div class="stat-label">Spent Today</div>
+          <div class="stat-value" id="spent-today">₹0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📥</div>
+          <div class="stat-label">Received Today</div>
+          <div class="stat-value" id="received-today">₹0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">📅</div>
+          <div class="stat-label">This Month</div>
+          <div class="stat-value" id="spent-month">₹0</div>
+        </div>
+        <div class="stat-card highlight-card">
+          <div class="stat-icon">🔁</div>
+          <div class="stat-label">Hidden Subs</div>
+          <div class="stat-value" id="subscriptions">₹0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="charts-row">
+      <div class="chart-card">
+        <div class="chart-title">Spending This Week</div>
+        <canvas id="weeklyChart" height="160"></canvas>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Category Breakdown</div>
+        <canvas id="categoryChart" height="160"></canvas>
+      </div>
+    </div>
+
+    <!-- Micro Leaks + Recent -->
+    <div class="bottom-row">
+      <div class="micro-card">
+        <div class="section-title">⚠️ Micro-Leak Tracker</div>
+        <p class="micro-sub">Small spends ₹10–₹100 this week</p>
+        <div id="micro-list" class="micro-list"></div>
+        <div class="micro-total">Total leak: <strong id="micro-total">₹0</strong></div>
+      </div>
+
+      <div class="recent-card">
+        <div class="section-title-row">
+          <div class="section-title">Recent Transactions</div>
+          <a href="transactions.html" class="see-all">See All →</a>
+        </div>
+        <div id="recent-list" class="txn-list"></div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/charts.js"></script>
+</body>
+</html>

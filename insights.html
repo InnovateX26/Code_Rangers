@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payflow – Insights</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="app-page">
+
+  <nav class="navbar">
+    <div class="nav-logo">₹ Payflow</div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="nav-link">Home</a>
+      <a href="transactions.html" class="nav-link">Transactions</a>
+      <a href="insights.html" class="nav-link active">Insights</a>
+    </div>
+    <div class="nav-right">
+      <button class="sync-btn" onclick="syncData()">
+        <span class="sync-icon-btn">⟳</span> Sync
+      </button>
+      <div class="avatar">KK</div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Spending Insights</h1>
+      <div class="txn-meta">April 2026 — full month analysis</div>
+    </div>
+
+    <!-- Summary Tiles -->
+    <div class="insights-summary">
+      <div class="ins-tile">
+        <div class="ins-icon">📉</div>
+        <div class="ins-label">Biggest Category</div>
+        <div class="ins-value" id="biggest-cat">—</div>
+      </div>
+      <div class="ins-tile">
+        <div class="ins-icon">💸</div>
+        <div class="ins-label">Most Spent On</div>
+        <div class="ins-value" id="most-merchant">—</div>
+      </div>
+      <div class="ins-tile">
+        <div class="ins-icon">🔁</div>
+        <div class="ins-label">Subscriptions/mo</div>
+        <div class="ins-value" id="sub-total">—</div>
+      </div>
+      <div class="ins-tile">
+        <div class="ins-icon">☕</div>
+        <div class="ins-label">Small Spends</div>
+        <div class="ins-value" id="micro-ins">—</div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="insights-charts">
+      <div class="chart-card large">
+        <div class="chart-title">Monthly Spending Trend</div>
+        <canvas id="monthlyChart" height="120"></canvas>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Category Split</div>
+        <canvas id="insightDonut" height="200"></canvas>
+        <div id="legend" class="donut-legend"></div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-title">Day-wise Spending (This Week)</div>
+        <canvas id="dayChart" height="200"></canvas>
+      </div>
+    </div>
+
+    <!-- Subscription Tracker -->
+    <div class="sub-tracker">
+      <div class="section-title">🔁 Subscription Tracker</div>
+      <p class="micro-sub">Auto-debits detected this month</p>
+      <div id="sub-list" class="sub-list"></div>
+    </div>
+
+    <!-- Savings Suggestion -->
+    <div class="savings-card">
+      <div class="savings-title">💡 Smart Suggestions</div>
+      <div id="suggestions-list" class="suggestions-list"></div>
+    </div>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/insights.js"></script>
+</body>
+</html>

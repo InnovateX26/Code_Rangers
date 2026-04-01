@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payflow – Transactions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="app-page">
+
+  <nav class="navbar">
+    <div class="nav-logo">₹ Payflow</div>
+    <div class="nav-links">
+      <a href="dashboard.html" class="nav-link">Home</a>
+      <a href="transactions.html" class="nav-link active">Transactions</a>
+      <a href="insights.html" class="nav-link">Insights</a>
+    </div>
+    <div class="nav-right">
+      <button class="sync-btn" id="sync-btn" onclick="syncData()">
+        <span class="sync-icon-btn">⟳</span> Sync
+      </button>
+      <div class="avatar">KK</div>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Transactions</h1>
+      <div class="txn-meta" id="txn-meta">Loading…</div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-bar">
+      <div class="filter-chips" id="category-filters">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="Food">🍔 Food</button>
+        <button class="chip" data-cat="Transport">🚗 Transport</button>
+        <button class="chip" data-cat="Entertainment">🎬 Entertainment</button>
+        <button class="chip" data-cat="Shopping">🛍️ Shopping</button>
+        <button class="chip" data-cat="Subscriptions">🔁 Subscriptions</button>
+        <button class="chip" data-cat="Health">💊 Health</button>
+        <button class="chip" data-cat="ATM">🏧 ATM/Cash</button>
+        <button class="chip" data-cat="Received">📥 Received</button>
+      </div>
+      <input type="text" id="search-input" class="search-input" placeholder="Search transactions…" oninput="filterTransactions()" />
+    </div>
+
+    <!-- Raw vs Smart toggle -->
+    <div class="toggle-row">
+      <span class="toggle-label">Show raw UPI codes</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="raw-toggle" onchange="toggleRaw()" />
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Transaction List -->
+    <div id="txn-full-list" class="txn-list full-list"></div>
+
+    <!-- Empty state -->
+    <div id="empty-state" class="empty-state" style="display:none">
+      <div class="empty-icon">🔍</div>
+      <p>No transactions found for this filter.</p>
+    </div>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/transactions.js"></script>
+</body>
+</html>
